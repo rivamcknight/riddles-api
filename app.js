@@ -29,6 +29,11 @@ const riddleSchema = new mongoose.Schema({
 
 const Riddle = mongoose.model("Riddle", riddleSchema);
 
+// landing page
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/README.md.html")
+});
+
 app.route("/riddles")
     .get(function(req, res) {
         // GET riddles?id={id} (returns specific riddle)
