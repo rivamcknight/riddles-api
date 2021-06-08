@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://riddles-api:riddles@cluster0.qmayr.mongodb.net/riddlesDB?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://riddles-api:gmFUl9eZ2NCgHkBz@cluster0.qmayr.mongodb.net/riddlesDB?retryWrites=true&w=majority",
     { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 const riddleSchema = new mongoose.Schema({
