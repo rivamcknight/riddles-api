@@ -200,7 +200,7 @@ app.get("/riddles/:riddleCategory", function(req, res) {
 app.get("/riddles/:riddleCategory/random", function(req, res) {
     Riddle.countDocuments({category: req.params.riddleCategory}).exec(function(err, count) {
         let random = Math.floor(Math.random() * count);
-        Riddle.findOne().select("-__v").select("-seed").skip(random).exec(function(err, riddle) {
+        Riddle.findOne({category: req.params.riddleCategory}).select("-__v").select("-seed").skip(random).exec(function(err, riddle) {
             if (!err) {
                 if (riddle) {
                     res.json(riddle);
