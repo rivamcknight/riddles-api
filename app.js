@@ -142,12 +142,18 @@ app.route("/riddles")
     .delete(function(req, res) {
         Riddle.findByIdAndDelete(req.query.id, function(err, foundRiddle) {
             if (!err) {
-                if (foundRiddle.seed) {
-                    // don't allow users to delete the server seed data
-                    res.status(403).json({message: "Cannot delete seed data"});
+                if (foundRiddle) {
+                    if (foundRiddle.seed) {
+                        // don't allow users to delete the server seed data
+                        res.status(403).json({message: "Cannot delete seed data"});
+                    } else {
+                        res.json({message: "Successfully deleted riddle"});
+                    }
                 } else {
-                    res.json({message: "Successfully deleted riddle"});
+                    res.status(404).json({message: "No riddle with the id '" + req.query.id + "' was found"});
                 }
+            } else if (err.name = "CastError") {
+                res.status(404).json({message: "No riddle with the id '" + req.query.id + "' was found"});
             } else {
                 res.status(500).json({error: err});
             }
