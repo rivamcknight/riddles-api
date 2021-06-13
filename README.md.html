@@ -193,7 +193,7 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p>Example curl request:</p>
-<pre><code>curl -X 'GET' 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
+<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
 </code></pre>
 <p>A successful response will return an HTTP status code of <code>200</code>. The Riddle object returned uses this schema:</p>
 <table>
@@ -265,7 +265,6 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><a href="#endpoints">Back to endpoints list</a></p>
 <hr />
-<hr />
 <h3 id="endpoints-for-creating-a-riddle">Endpoints for creating a riddle</h3>
 <h4 id="📌-to-add-a-new-riddle-to-the-database">📌 To add a new riddle to the database</h4>
 <p>You can add a new riddle to the database using a JSON request body.</p>
@@ -324,7 +323,7 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
 <p>Example curl request:</p>
-<pre><code>curl -X 'POST' \
+<pre><code>curl -X POST \
   'https://guarded-eyrie-88809.herokuapp.com/riddles' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -435,7 +434,6 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><a href="#endpoints">Back to endpoints list</a></p>
 <hr />
-<hr />
 <h3 id="endpoints-for-modifying-a-riddle">Endpoints for modifying a riddle</h3>
 <h4 id="📌-to-update-an-existing-riddle">📌 To update an existing riddle</h4>
 <p>You can update a riddle in the database by using its <code>id</code> as a query parameter and passing a JSON request body with the new values. All fields will be overwritten with the fields given in the request body. If any non-required fields are left out of the request body, they will be overwritten as null. Currently, updating seed data (the original riddles added to the database) is not allowed.</p>
@@ -513,7 +511,7 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
 <p>Example curl request:</p>
-<pre><code>curl -X 'PUT' \
+<pre><code>curl -X PUT \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -702,7 +700,7 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
 <p>Example curl request:</p>
-<pre><code>curl -X 'PATCH' \
+<pre><code>curl -X PATCH \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -853,7 +851,7 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p>Example curl request:</p>
-<pre><code>curl -X 'DELETE' 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
+<pre><code>curl -X DELETE 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
 </code></pre>
 <p>A successful response will return an HTTP status code of <code>200</code> and have the following schema:</p>
 <table>
@@ -905,7 +903,6 @@ Content-Type: application/json; charset=utf-8
 </table>
 <p><a href="#endpoints">Back to endpoints list</a></p>
 <hr />
-<hr />
 <h3 id="endpoints-for-getting-riddles">Endpoints for getting riddles</h3>
 <h4 id="📌-to-get-all-riddles-or-an-individual-riddle">📌 To get all riddles or an individual riddle</h4>
 <p>When using the optional <code>id</code> query parameter, the corresponding Riddle object will be returned. Without using the query parameter, this endpoint will return an array of all Riddle objects stored in the database.</p>
@@ -945,11 +942,11 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p>Example curl request to get all riddles:</p>
-<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles
+<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles'
 </code></pre>
 <p>The response will be an array of Riddle objects.</p>
 <p>Example curl request to get an individual riddle:</p>
-<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe
+<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe'
 </code></pre>
 <p>The response will be an individual Riddle object.</p>
 <p>Example successful response:</p>
@@ -1060,7 +1057,7 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p>Example curl request to get all riddles:</p>
-<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy
+<pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy'
 </code></pre>
 <p>The response will be an array of Riddle objects.</p>
 <p>Example successful response:</p>

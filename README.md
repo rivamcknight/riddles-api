@@ -112,7 +112,7 @@ The path parameter has the following definition:
 
 Example curl request:
 ```
-curl -X 'GET' 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
+curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
 ```
 A successful response will return an HTTP status code of `200`. The Riddle object returned uses this schema:
 
@@ -148,7 +148,6 @@ Possible errors:
 [Back to endpoints list](#endpoints)
 
 ***
-***
 
 ### Endpoints for creating a riddle
 
@@ -173,7 +172,7 @@ The request body should use the following schema:
 
 Example curl request:
 ```
-curl -X 'POST' \
+curl -X POST \
   'https://guarded-eyrie-88809.herokuapp.com/riddles' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -230,7 +229,6 @@ Possible errors:
 [Back to endpoints list](#endpoints)
 
 ***
-***
 
 ### Endpoints for modifying a riddle
 
@@ -261,7 +259,7 @@ The request body should use the following schema:
 
 Example curl request:
 ```
-curl -X 'PUT' \
+curl -X PUT \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -346,7 +344,7 @@ The request body should use the following schema:
 
 Example curl request:
 ```
-curl -X 'PATCH' \
+curl -X PATCH \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -420,7 +418,7 @@ The query parameter has the following definition:
 
 Example curl request:
 ```
-curl -X 'DELETE' 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
+curl -X DELETE 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
 ```
 
 A successful response will return an HTTP status code of `200` and have the following schema:
@@ -450,7 +448,6 @@ Possible errors:
 [Back to endpoints list](#endpoints)
 
 ***
-***
 
 ### Endpoints for getting riddles
 
@@ -470,14 +467,14 @@ The optional query parameter has the following definition:
 
 Example curl request to get all riddles:
 ```
-curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles
+curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles'
 ```
 
 The response will be an array of Riddle objects.
 
 Example curl request to get an individual riddle:
 ```
-curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe
+curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe'
 ```
 
 The response will be an individual Riddle object.
@@ -532,7 +529,7 @@ The path parameter has the following definition:
 
 Example curl request to get all riddles:
 ```
-curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy
+curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy'
 ```
 
 The response will be an array of Riddle objects.
