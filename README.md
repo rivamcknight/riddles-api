@@ -31,7 +31,7 @@ This API allows you to get riddles and their answers, in various categories. The
 No authentication is needed to use this API.
 
 ## Endpoints
-The API currently has eight endpoints. Each endpoint is listed and described in the following sections. 
+The API's endpoints and functions are listed and described in the following sections. 
 
 - [Endpoints used to get one random riddle](#endpoints-for-getting-one-random-riddle):
   - [Select a random riddle from the database](#📌-to-select-a-random-riddle-from-the-entire-database)
