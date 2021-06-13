@@ -1,0 +1,405 @@
+openapi: '3.0.3'
+info:
+  title: Riddles API
+  description: "This API allows you to get riddles and their answers, in various categories. The current categories of riddles include easy, hard, kids, math, word, and funny. In addition to requesting riddles in bulk, the endpoints allow you to request one random riddle from the entire database or one random riddle from a specific category. Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API. <br><br> **NOTE**: No authentication is needed to use this API."
+  version: '1.0'
+servers:
+  - url: https://guarded-eyrie-88809.herokuapp.com
+  #- url: http://localhost:3000
+paths:
+  /riddles:
+    get:
+      summary: "Returns Riddle objects, which contain the riddle's question and answer"
+      description: "When using the optional `id` query parameter, the corresponding Riddle object will be returned. Without using the query parameter, this endpoint will return an array of all Riddle objects stored in the database."
+      tags:
+        - "Get riddles"
+      parameters:
+      - name: id
+        in: query
+        description: "**Optional**: If you know the database id associated with a riddle, you can use this parameter to get that specific Riddle object. **Omit for all riddles to be returned.**"
+        schema:
+          type: string
+        required: false
+        example: 60bbdbfa5dcf8ac52f16897c
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be returned."
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Riddle'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+    post:
+      summary: "Adds a new riddle to the database"
+      description: "You can add a new riddle to the database using a JSON request body. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      tags:
+        - "Create a riddle"      
+      requestBody:
+        $ref: '#/components/requestBodies/RiddleRequestBody'
+      responses:
+        '201':
+          description: "`Created`: A successful server response. The requested content will be created." 
+          content: 
+            application/json:
+              schema:
+                title: "Post Response"
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "A brief success message."
+                    example: "Successfully added new riddle"
+                  content:
+                    type: object
+                    description: "The Riddle object added to the database."
+                    properties:
+                      _id:
+                        type: string
+                        description: "The database id for the Riddle object."
+                        example: 60bd0708d7dcc31bd9376abe
+                      riddle:
+                        type: string
+                        description: "The riddle's question."
+                        example: "I'm tall when I'm young, and I'm short when I'm old. What am I?"
+                      answer:
+                        type: string
+                        description: "The riddle's answer."
+                        example: "A candle"
+                      category:
+                        type: string
+                        description: "A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added."
+                        example: easy
+                      source:
+                        type: string
+                        description: "The source of the riddle."
+                        example: "https://parade.com/947956/parade/riddles/"
+                      __v:
+                        type: number
+                        description: "An internal versioning number used by Mongoose (the Object Data Model library used to connect to the MongoDB database)."
+                        example: 0
+        '400':
+          $ref: '#/components/responses/400'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      summary: "Updates a riddle in the database"
+      description: "You can update a riddle in the database by using its `id` as a query parameter and passing a JSON request body with the new values. All fields will be overwritten with the fields given in the request body. If any non-required fields are left out of the request body, they will be overwritten as null. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      tags:
+        - "Modify a riddle"
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        $ref: '#/components/requestBodies/RiddleRequestBody'
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be updated." 
+          content: 
+            application/json:
+              schema:
+                title: "Put Response"
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "A brief success message."
+                    example: "Successfully updated riddle"
+                  content:
+                    $ref: '#/components/schemas/RiddleNewOrUpdated'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+    patch:
+      summary: "Updates fields of a riddle in the database"
+      description: "You can update fields of a riddle in the database by using its `id` as a query parameter and passing a JSON request body with the updated values. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      tags:
+        - "Modify a riddle"
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        description: "A JSON object containing a riddle. All fields are optional. If no request body is included in the `PUT` request, the request will return a successful response but no fields will be updated."
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiddlePatched'
+        required: true
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be updated." 
+          content:
+            application/json:
+              schema:
+                title: "Patch Response"
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "A brief success message."
+                    example: "Successfully updated riddle"
+                  content:
+                    $ref: '#/components/schemas/RiddlePatched'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+    delete:
+      summary: "Deletes a riddle in the database"
+      description: "You can delete a riddle in the database by using its `id` as a query parameter. Currently, deleting seed data (the original riddles added to the database) is not allowed."
+      tags:
+        - "Modify a riddle"      
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be deleted." 
+          content: 
+            application/json:
+              schema:
+                title: "Delete Response"
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: "A brief success message."
+                    example: "Successfully deleted riddle"
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+  /riddles/random:
+    get:
+      summary: "Returns a random riddle with the answer"
+      description: "A random riddle from the entire database will be selected and returned."
+      tags:
+        - "Get one random riddle"      
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be returned."
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Riddle'
+        '404':
+          description: "`Not Found`: This error will be returned if there are no riddles in the database."
+          content:
+              application/json:
+                schema:
+                  title: "Not Found"
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      description: "A brief error message."
+                      example: "No riddle was found"
+        '500':
+          $ref: '#/components/responses/500'
+  /riddles/{category}:
+    get:
+      summary: "Returns all riddles with answers, from a specific category"
+      description: "An array of all the riddles matching the specific category is returned. The desired category is passed as a path parameter."
+      tags:
+        - "Get riddles"      
+      parameters:
+        - $ref: '#/components/parameters/category'
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be returned."
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Riddle'
+        '404':
+          description: "`Not Found`: This error will be returned if there are no riddles with the requested `category` in the database."
+          content:
+              application/json:
+                schema:
+                  title: "Not Found"
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      description: "A brief error message."
+                      example: "No riddles with the category 'cool' were found"
+        '500':
+          $ref: '#/components/responses/500'
+  /riddles/{category}/random:
+    get:
+      summary: "Returns a random riddle with the answer from a category"
+      description: "A random riddle from a specific category will be selected and returned. The desired category is passed as a path parameter."
+      tags:
+        - "Get one random riddle"
+      parameters:
+        - $ref: '#/components/parameters/category'      
+      responses:
+        '200':
+          description: "`OK`: A successful server response. The requested content will be returned."
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Riddle'
+        '404':
+          description: "`Not Found`: This error will be returned if there are no riddles with the requested `category` in the database."
+          content:
+              application/json:
+                schema:
+                  title: "Not Found"
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      description: "A brief error message."
+                      example: "No riddle was found"
+        '500':
+          $ref: '#/components/responses/500'                                
+components:
+  parameters:
+    id:
+      name: id
+      in: query
+      description: "**Required**: The database `id` for the riddle. This is needed for `PUT`, `PATCH`, or `DELETE` requests which are operations performed on an existing riddle."
+      schema:
+        type: string
+      required: true
+      example: 60bd0708d7dcc31bd9376abe
+    category:  
+        name: category
+        in: path
+        description: "**Required**: A riddle category. The seed data (original riddles added to database) include the following categories: easy, hard, funny, kids, math, and word."
+        schema:
+          type: string
+        required: true
+        example: easy
+  schemas:
+    'Riddle':
+      title: "Returned Riddle Object"
+      type: object
+      description: "The JSON object returned from a `GET` request."
+      properties:
+        _id:
+          type: string
+          description: "The database id for the Riddle object."
+          example: 60bd0708d7dcc31bd9376abe
+        riddle:
+          type: string
+          description: "The riddle's question."
+          example: "I'm tall when I'm young, and I'm short when I'm old. What am I?"
+        answer:
+          type: string
+          description: "The riddle's answer."
+          example: "A candle"
+        category:
+          type: string
+          description: "A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added."
+          example: easy
+        source:
+          type: string
+          description: "The source of the riddle."
+          example: "https://parade.com/947956/parade/riddles/"
+    'RiddleNewOrUpdated':    
+      title: "POST or PUT Riddle Object"
+      type: object
+      description: "The JSON object used in the request body of a `POST` or `PUT` request."
+      properties:
+        riddle:
+          type: string
+          description: "**Required**. The riddle's question."
+          example: "There's only one word in the dictionary that's spelled wrong. What is it?"
+        answer:
+          type: string
+          description: "**Required**. The riddle's answer."
+          example: "The word 'wrong.' It's the only word that's spelled W-R-O-N-G."
+        category:
+          type: string
+          description: "**Required**. A one-word classification of the riddle. It should not contain spaces. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added."
+          example: kids
+        source:
+          type: string
+          description: "**Optional**. The source of the riddle."
+          example: "https://www.prodigygame.com/main-en/blog/riddles-for-kids/"
+      required:
+      - riddle
+      - answer
+      - category
+    'RiddlePatched':    
+      title: "PATCH Riddle Object"
+      type: object
+      description: "The JSON object used in the request body and returned from a `PATCH` request."
+      properties:
+        riddle:
+          type: string
+          description: "**Optional**. An update to the riddle's question."
+          example: "There's only one word in the dictionary that's spelled wrong. What is it?"
+        answer:
+          type: string
+          description: "**Optional**. An update to the riddle's answer."
+          example: "The word 'wrong.' It's the only word that's spelled W-R-O-N-G."
+        category:
+          type: string
+          description: "**Optional**. An update to the classification of the riddle. It should be one-word and not contain spaces. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added."
+          example: kids
+        source:
+          type: string
+          description: "**Optional**. An update to the source of the riddle."
+          example: "https://www.prodigygame.com/main-en/blog/riddles-for-kids/"      
+  requestBodies:
+    'RiddleRequestBody':
+      description: "A JSON object containing a riddle. The fields `riddle`, `answer` and `category` are required, `source` is optional."
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RiddleNewOrUpdated'
+      required: true
+  responses:
+    '400':
+      description: "`Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space."
+      content:
+        application/json: {}
+    '403':
+      description: "`Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database)."
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: "A brief error message."
+                example: "Cannot modify seed data"
+    '404':
+      description: "`Not Found`: This error will occur if the requested riddle `id` is not found in the database. It could also occur if the database is empty."
+      content:
+          application/json:
+            schema:
+              title: "Not Found"
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: "A brief error message."
+                  example: "No riddle with the id '60bbdbfa5dcf8ac52f16897c' was found"
+    '500':
+      description: "`Internal Server Error`: An unexpected error occurred on the server."
+tags:
+  - name: Get one random riddle
+    description: "Endpoints used to get a random riddle"
+  - name: Create a riddle
+    description: "Endpoints used to create a riddle"    
+  - name: Modify a riddle
+    description: "Endpoints used to modify a riddle"
+  - name: Get riddles
+    description: "Endpoints used to get riddles"

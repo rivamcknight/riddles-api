@@ -1,8 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const swaggerUi = require('swagger-ui-express');
+YAML = require('yamljs');
+
+const swaggerDocument = YAML.load('./riddlesapi.yml');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+
+let options = {
+    swaggerOptions: {
+        defaultModelsExpandDepth: -1
+    }
+};
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 mongoose.connect("mongodb://localhost:27017/riddlesDB", { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
