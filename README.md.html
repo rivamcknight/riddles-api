@@ -24,12 +24,12 @@
 <ul>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#authentication">Authentication</a></li>
-<li><a href="#endpoints">Endpoints</a>
+<li><a href="#functions">Functions</a>
   <ul>
-    <li><a href="#endpoints-for-getting-riddles-in-bulk-or-by-id">Endpoints to get riddles in bulk or by id</a></li>
-    <li><a href="#endpoints-for-getting-one-random-riddle">Endpoints to get a random riddle</a></li>
-    <li><a href="#endpoints-for-creating-or-deleting-a-riddle">Endpoints to create or delete a riddle</a></li>
-    <li><a href="#endpoints-for-modifying-a-riddle">Endpoints to modify a riddle</a></li>
+    <li><a href="#getting-riddles-in-bulk-or-by-id">Get riddles in bulk or by id</a></li>
+    <li><a href="#getting-one-random-riddle">Get a random riddle</a></li>
+    <li><a href="#creating-or-deleting-a-riddle">Create or delete a riddle</a></li>
+    <li><a href="#modifying-a-riddle">Modify a riddle</a></li>
   </ul>
 </li>
 </ul>
@@ -38,35 +38,35 @@
 <p><strong>Riddles API Server</strong>:  https://guarded-eyrie-88809.herokuapp.com</p>
 <h2 id="authentication">Authentication</h2>
 <p>No authentication is needed to use this API.</p>
-<h2 id="endpoints">Endpoints</h2>
+<h2 id="functions">Functions</h2>
 <p>The API's endpoints and functions are listed and described in the following sections. </p>
 <ul>
-  <li><a href="#endpoints-for-getting-riddles-in-bulk-or-by-id">Endpoints to get riddles in bulk or by id</a>:
+  <li><a href="#getting-riddles-in-bulk-or-by-id">Get riddles in bulk or by id</a>:
     <ul>
       <li><a href="#-to-get-all-riddles-or-an-individual-riddle">Get all riddles or an individual riddle</a></li>
       <li><a href="#-to-get-all-riddles-from-a-specific-category">Get all riddles from a specific category</a></li>
     </ul>
   </li>
-  <li><a href="#endpoints-for-getting-one-random-riddle">Endpoints to get one random riddle</a>:
+  <li><a href="#getting-one-random-riddle">Get one random riddle</a>:
     <ul>
       <li><a href="#-to-select-a-random-riddle-from-the-entire-database">Select a random riddle from the database</a></li>
       <li><a href="#-to-select-a-random-riddle-from-a-specific-category">Select a random riddle from a specific category</a></li>
     </ul>
   </li>
-  <li><a href="#endpoints-for-creating-or-deleting-a-riddle">Endpoints to create or delete a riddle</a>:
+  <li><a href="#creating-or-deleting-a-riddle">Create or delete a riddle</a>:
     <ul>
       <li><a href="#-to-add-a-new-riddle-to-the-database">Add a riddle to the database</a></li>
       <li><a href="#-to-delete-a-riddle-from-the-database">Delete a riddle from the database</a></li>
     </ul>
   </li>
-  <li><a href="#endpoints-for-modifying-a-riddle">Endpoints to modify a riddle</a>:
+  <li><a href="#modifying-a-riddle">Modify a riddle</a>:
     <ul>
       <li><a href="#-to-update-an-existing-riddle-by-overwriting">Update an existing riddle by overwriting</a></li>
       <li><a href="#-to-update-a-field-of-an-existing-riddle">Update a field of an existing riddle</a></li>
     </ul>
   </li>
 </ul>
-<h3 id="endpoints-for-getting-riddles-in-bulk-or-by-id">Endpoints for getting riddles in bulk or by id</h3>
+<h3 id="getting-riddles-in-bulk-or-by-id">Getting riddles in bulk or by id</h3>
 <h4 id="-to-get-all-riddles-or-an-individual-riddle">📌 To get all riddles or an individual riddle</h4>
 <table>
 <thead>
@@ -202,7 +202,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
 <h4 id="-to-get-all-riddles-from-a-specific-category">📌 To get all riddles from a specific category</h4>
 <table>
@@ -314,9 +314,9 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
-<h3 id="endpoints-for-getting-one-random-riddle">Endpoints for getting one random riddle</h3>
+<h3 id="getting-one-random-riddle">Getting one random riddle</h3>
 <h4 id="-to-select-a-random-riddle-from-the-entire-database">📌 To select a random riddle from the entire database:</h4>
 <table>
 <thead>
@@ -406,7 +406,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
 <h4 id="-to-select-a-random-riddle-from-a-specific-category">📌 To select a random riddle from a specific category:</h4>
 <table>
@@ -516,9 +516,9 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
-<h3 id="endpoints-for-creating-or-deleting-a-riddle">Endpoints for creating or deleting a riddle</h3>
+<h3 id="creating-or-deleting-a-riddle">Creating or deleting a riddle</h3>
 <h4 id="-to-add-a-new-riddle-to-the-database">📌 To add a new riddle to the database</h4>
 <table>
 <thead>
@@ -685,7 +685,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
 <h4 id="-to-delete-a-riddle-from-the-database">📌 To delete a riddle from the database</h4>
 <table>
@@ -775,9 +775,9 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
-<h3 id="endpoints-for-modifying-a-riddle">Endpoints for modifying a riddle</h3>
+<h3 id="modifying-a-riddle">Modifying a riddle</h3>
 <h4 id="-to-update-an-existing-riddle-by-overwriting">📌 To update an existing riddle by overwriting</h4>
 <table>
 <thead>
@@ -965,7 +965,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p><a href="#endpoints">Back to endpoints list</a></p>
+<p><a href="#functions">Back to functions list</a></p>
 <hr />
 <h4 id="-to-update-a-field-of-an-existing-riddle">📌 To update a field of an existing riddle</h4>
 <table>

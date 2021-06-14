@@ -395,10 +395,10 @@ components:
       description: "`Internal Server Error`: An unexpected error occurred on the server."
 tags:
   - name: Get riddles in bulk or by id
-    description: "Endpoints to get riddles in bulk or by `id`"
+    description: "Get riddles in bulk or by `id`"
   - name: Get one random riddle
-    description: "Endpoints to get a random riddle"
+    description: "Get a random riddle"
   - name: Create or delete a riddle
-    description: "Endpoints to create or delete a riddle"
+    description: "Create or delete a riddle"
   - name: Modify a riddle
-    description: "Endpoints to modify a riddle"
+    description: "Modify a riddle"
