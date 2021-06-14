@@ -529,7 +529,7 @@ The query parameter is defined as:
 
 The request body should use the following schema:
 
-| Field | Type | Optional | Description |
+| Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | riddle | string | Optional | An update to the riddle's question |
 | answer | string | Optional | An update to the riddle's answer |
