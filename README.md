@@ -7,13 +7,13 @@ For this project, I've chosen to document the API with three different tools: [S
 
 - [API documentation using Swagger UI](https://guarded-eyrie-88809.herokuapp.com/api-docs)
 
-  <a href="https://guarded-eyrie-88809.herokuapp.com/api-docs"><img src="images/swagger.png" alt="Swagger UI screenshot" width="400"/></a>
+  <a href="https://guarded-eyrie-88809.herokuapp.com/api-docs"><img src="./images/swagger.png" alt="Swagger UI screenshot" width="400"/></a>
 - [API documentation using Stoplight](https://rmcknight.stoplight.io/docs/riddles-api)
 
-  <a href="https://rmcknight.stoplight.io/docs/riddles-api"><img src="images/stoplight.png" alt="Stoplight.io screenshot" width="400"/></a>
+  <a href="https://rmcknight.stoplight.io/docs/riddles-api"><img src="./images/stoplight.png" alt="Stoplight.io screenshot" width="400"/></a>
 - [API documentation using Markdown](#riddles-api-documentation)
 
-  <a href="#riddles-api-documentation"><img src="images/markdown.png" alt="Markdown screenshot" width="400"/></a>
+  <a href="#riddles-api-documentation"><img src="./images/markdown.png" alt="Markdown screenshot" width="400"/></a>
 
 # Riddles API Documentation
 
