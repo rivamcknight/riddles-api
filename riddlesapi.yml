@@ -1,22 +1,21 @@
 openapi: '3.0.3'
 info:
-  title: Riddles API
-  description: "This API allows you to get riddles and their answers, in various categories. The current categories of riddles include easy, hard, kids, math, word, and funny. In addition to requesting riddles in bulk, the endpoints allow you to request one random riddle from the entire database or one random riddle from a specific category. Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API. <br><br> **NOTE**: No authentication is needed to use this API."
+  title: "Riddles API"
+  description: "The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all. Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API. <br><br> **NOTE**: No authentication is needed to use this API."
   version: '1.0'
 servers:
   - url: https://guarded-eyrie-88809.herokuapp.com
-  #- url: http://localhost:3000
 paths:
   /riddles:
     get:
-      summary: "Returns Riddle objects, which contain the riddle's question and answer"
-      description: "When using the optional `id` query parameter, the corresponding Riddle object will be returned. Without using the query parameter, this endpoint will return an array of all Riddle objects stored in the database."
+      summary: "Returns Riddle objects"
+      description: "Use the optional `id` query parameter to have the corresponding Riddle object returned. Omit the query parameter to have an array of all the Riddle objects in the database returned."
       tags:
-        - "Get riddles"
+        - "Get riddles in bulk or by id"
       parameters:
       - name: id
         in: query
-        description: "**Optional**: If you know the database id associated with a riddle, you can use this parameter to get that specific Riddle object. **Omit for all riddles to be returned.**"
+        description: "**Optional**: If the database id for a riddle is known, use this parameter to get that specific Riddle object. **Omit for all riddles to be returned.**"
         schema:
           type: string
         required: false
@@ -34,9 +33,9 @@ paths:
           $ref: '#/components/responses/500'
     post:
       summary: "Adds a new riddle to the database"
-      description: "You can add a new riddle to the database using a JSON request body. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      description: "Adds a new Riddle object to the database via the JSON request body. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
       tags:
-        - "Create a riddle"      
+        - "Create or delete a riddle"
       requestBody:
         $ref: '#/components/requestBodies/RiddleRequestBody'
       responses:
@@ -85,8 +84,8 @@ paths:
         '500':
           $ref: '#/components/responses/500'
     put:
-      summary: "Updates a riddle in the database"
-      description: "You can update a riddle in the database by using its `id` as a query parameter and passing a JSON request body with the new values. All fields will be overwritten with the fields given in the request body. If any non-required fields are left out of the request body, they will be overwritten as null. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      summary: "Updates (by overwriting) a riddle in the database"
+      description: "Updates a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
       tags:
         - "Modify a riddle"
       parameters:
@@ -117,8 +116,8 @@ paths:
         '500':
           $ref: '#/components/responses/500'
     patch:
-      summary: "Updates fields of a riddle in the database"
-      description: "You can update fields of a riddle in the database by using its `id` as a query parameter and passing a JSON request body with the updated values. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      summary: "Updates individual fields of a riddle in the database"
+      description: "Updates one or more fields of a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set desired fields to a new value. Omitted fields retain their values. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
       tags:
         - "Modify a riddle"
       parameters:
@@ -154,10 +153,10 @@ paths:
         '500':
           $ref: '#/components/responses/500'
     delete:
-      summary: "Deletes a riddle in the database"
-      description: "You can delete a riddle in the database by using its `id` as a query parameter. Currently, deleting seed data (the original riddles added to the database) is not allowed."
+      summary: "Deletes a riddle from the database"
+      description: "Deletes a Riddle object from the database. Select a Riddle object to delete by setting the query parameter to its `id`. Currently, deleting seed data (the original riddles added to the database) is not allowed."
       tags:
-        - "Modify a riddle"      
+        - "Create or delete a riddle"
       parameters:
         - $ref: '#/components/parameters/id'
       responses:
@@ -181,10 +180,10 @@ paths:
           $ref: '#/components/responses/500'
   /riddles/random:
     get:
-      summary: "Returns a random riddle with the answer"
-      description: "A random riddle from the entire database will be selected and returned."
+      summary: "Returns a random riddle"
+      description: "A random Riddle object from the entire database is selected and returned."
       tags:
-        - "Get one random riddle"      
+        - "Get one random riddle"
       responses:
         '200':
           description: "`OK`: A successful server response. The requested content will be returned."
@@ -208,10 +207,10 @@ paths:
           $ref: '#/components/responses/500'
   /riddles/{category}:
     get:
-      summary: "Returns all riddles with answers, from a specific category"
-      description: "An array of all the riddles matching the specific category is returned. The desired category is passed as a path parameter."
+      summary: "Returns all riddles from a specific category"
+      description: "An array of Riddle objects matching the specific category is returned. The desired category is passed as a path parameter."
       tags:
-        - "Get riddles"      
+        - "Get riddles in bulk or by id"
       parameters:
         - $ref: '#/components/parameters/category'
       responses:
@@ -239,12 +238,12 @@ paths:
           $ref: '#/components/responses/500'
   /riddles/{category}/random:
     get:
-      summary: "Returns a random riddle with the answer from a category"
-      description: "A random riddle from a specific category will be selected and returned. The desired category is passed as a path parameter."
+      summary: "Returns a random riddle from the category specified"
+      description: "A random Riddle object from the specified category will be selected and returned. The desired category is passed as a path parameter."
       tags:
         - "Get one random riddle"
       parameters:
-        - $ref: '#/components/parameters/category'      
+        - $ref: '#/components/parameters/category'
       responses:
         '200':
           description: "`OK`: A successful server response. The requested content will be returned."
@@ -265,7 +264,7 @@ paths:
                       description: "A brief error message."
                       example: "No riddle was found"
         '500':
-          $ref: '#/components/responses/500'                                
+          $ref: '#/components/responses/500'
 components:
   parameters:
     id:
@@ -279,7 +278,7 @@ components:
     category:  
         name: category
         in: path
-        description: "**Required**: A riddle category. The seed data (original riddles added to database) include the following categories: easy, hard, funny, kids, math, and word."
+        description: "**Required**: A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word."
         schema:
           type: string
         required: true
@@ -370,7 +369,7 @@ components:
       content:
         application/json: {}
     '403':
-      description: "`Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database)."
+      description: "`Forbidden`: This error will be returned when attempting to modify the seed data (the original riddles added to the database)."
       content:
         application/json:
           schema:
@@ -395,11 +394,11 @@ components:
     '500':
       description: "`Internal Server Error`: An unexpected error occurred on the server."
 tags:
+  - name: Get riddles in bulk or by id
+    description: "Endpoints to get riddles in bulk or by `id`"
   - name: Get one random riddle
-    description: "Endpoints used to get a random riddle"
-  - name: Create a riddle
-    description: "Endpoints used to create a riddle"    
+    description: "Endpoints to get a random riddle"
+  - name: Create or delete a riddle
+    description: "Endpoints to create or delete a riddle"
   - name: Modify a riddle
-    description: "Endpoints used to modify a riddle"
-  - name: Get riddles
-    description: "Endpoints used to get riddles"
+    description: "Endpoints to modify a riddle"
