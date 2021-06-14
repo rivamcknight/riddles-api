@@ -1,5 +1,5 @@
-## Background
-This project was created with Node.js with Express and MongoDB with Mongoose. I created this simple API to experiment with API documentation tools.
+## Project Purpose
+I created this simple API to experiment with API documentation tools. This project was created with Node.js with Express and MongoDB with Mongoose. 
 
 I am using [Heroku](https://www.heroku.com/) to host a live version of the app so that the interactive tools are usable.
 
