@@ -20,11 +20,11 @@ For this project, I've chosen to document the API with three different tools: [S
 ### Contents
 - [Overview](#overview)
 - [Authentication](#authentication)
-- [Endpoints](#endpoints)
-  - [Endpoints to get riddles in bulk or by id](#endpoints-for-getting-riddles-in-bulk-or-by-id)
-  - [Endpoints to get a random riddle](#endpoints-for-getting-one-random-riddle)
-  - [Endpoints to create or delete a riddle](#endpoints-for-creating-or-deleting-a-riddle)
-  - [Endpoints to modify a riddle](#endpoints-for-modifying-a-riddle)
+- [Functions](#functions)
+  - [Get riddles in bulk or by id](#getting-riddles-in-bulk-or-by-id)
+  - [Get a random riddle](#getting-one-random-riddle)
+  - [Create or delete a riddle](#creating-or-deleting-a-riddle)
+  - [Modify a riddle](#modifying-a-riddle)
 
 ## Overview
 The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all. Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API."
@@ -34,23 +34,23 @@ The Riddles API can return riddles from a variety of categories. Current categor
 ## Authentication
 No authentication is needed to use this API.
 
-## Endpoints
-The API's endpoints and functions are listed and described in the following sections. 
+## Functions
+The API's endpoints and usage are described in the following sections. 
 
-- [Endpoints to get riddles in bulk or by id](#endpoints-for-getting-riddles-in-bulk-or-by-id):
+- [Get riddles in bulk or by id](#getting-riddles-in-bulk-or-by-id):
   - [Get all riddles or an individual riddle](#-to-get-all-riddles-or-an-individual-riddle)
   - [Get all riddles from a specific category](#-to-get-all-riddles-from-a-specific-category)
-- [Endpoints to get one random riddle](#endpoints-for-getting-one-random-riddle):
+- [Get one random riddle](#getting-one-random-riddle):
   - [Select a random riddle from the database](#-to-select-a-random-riddle-from-the-entire-database)
   - [Select a random riddle from a specific category](#-to-select-a-random-riddle-from-a-specific-category)
-- [Endpoints to create or delete a riddle](#endpoints-for-creating-or-deleting-a-riddle):
+- [Create or delete a riddle](#creating-or-deleting-a-riddle):
   - [Add a riddle to the database](#-to-add-a-new-riddle-to-the-database)
   - [Delete a riddle from the database](#-to-delete-a-riddle-from-the-database)
-- [Endpoints to modify a riddle](#endpoints-for-modifying-a-riddle):
+- [Modify a riddle](#modifying-a-riddle):
   - [Update an existing riddle by overwriting](#-to-update-an-existing-riddle-by-overwriting)
   - [Update a field of an existing riddle](#-to-update-a-field-of-an-existing-riddle)
 
-### Endpoints for getting riddles in bulk or by id
+### Getting riddles in bulk or by id
 
 #### 📌 To get all riddles or an individual riddle
 
@@ -135,7 +135,7 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. It could also occur if the database is empty. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
@@ -191,11 +191,11 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles with the requested `category` in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
-### Endpoints for getting one random riddle
+### Getting one random riddle
 
 #### 📌 To select a random riddle from the entire database:
 
@@ -241,7 +241,7 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
@@ -294,11 +294,11 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles with the requested `category` in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
-### Endpoints for creating or deleting a riddle
+### Creating or deleting a riddle
 
 #### 📌 To add a new riddle to the database
 
@@ -375,7 +375,7 @@ Possible errors:
 | 400 | `Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
@@ -422,11 +422,11 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
-### Endpoints for modifying a riddle
+### Modifying a riddle
 
 #### 📌 To update an existing riddle by overwriting
 
@@ -509,7 +509,7 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to endpoints list](#endpoints)
+[Back to functions list](#functions)
 
 ***
 
