@@ -12,7 +12,9 @@ app.use(cors());
 
 let options = {
     swaggerOptions: {
-        defaultModelsExpandDepth: -1
+        defaultModelsExpandDepth: -1,
+        defaultModelExpandDepth: 3,
+        defaultModelRendering: "model"
     }
 };
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
