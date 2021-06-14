@@ -6,9 +6,14 @@ I am using [Heroku](https://www.heroku.com/) to host a live version of the app s
 For this project, I've chosen to document the API with three different tools: [Swagger UI](https://swagger.io/tools/swagger-ui/), [Stoplight](https://stoplight.io/), and [Markdown](https://en.wikipedia.org/wiki/Markdown). I created a yaml file that follows the [OpenAPI Specification Version 3.0.3](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md) and used both Swagger UI and Stoplight to render the documentation. I also created the documentation using Markdown, which is the bulk of this readme. Select the links below to check out the results of each.
 
 - [API documentation using Swagger UI](https://guarded-eyrie-88809.herokuapp.com/api-docs)
-- [API documentation using Stoplight](https://rmcknight.stoplight.io/docs/riddles-api/)
+
+  <a href="https://guarded-eyrie-88809.herokuapp.com/api-docs"><img src="images/swagger.png" alt="Swagger UI screenshot" width="400"/></a>
+- [API documentation using Stoplight](https://rmcknight.stoplight.io/docs/riddles-api)
+
+  <a href="https://rmcknight.stoplight.io/docs/riddles-api"><img src="images/stoplight.png" alt="Stoplight.io screenshot" width="400"/></a>
 - [API documentation using Markdown](#riddles-api-documentation)
 
+  <a href="#riddles-api-documentation"><img src="images/markdown.png" alt="Markdown screenshot" width="400"/></a>
 
 # Riddles API Documentation
 
