@@ -1,9 +1,9 @@
-## Project Purpose
+# Introduction
 I created this simple API to experiment with API documentation tools. This project was created with Node.js with Express and MongoDB with Mongoose. 
 
 I am using [Heroku](https://www.heroku.com/) to host a live version of the app so that the interactive tools are usable.
 
-For this project, I've chosen to document the API with three different tools: [Swagger UI](https://swagger.io/tools/swagger-ui/), [Stoplight](https://stoplight.io/), and [Markdown](https://en.wikipedia.org/wiki/Markdown). I created a yaml file that follows the [OpenAPI Specification Version 3.0.3](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md) and used both Swagger UI and Stoplight to render the documentation. I also created the documentation using Markdown, which is the bulk of this readme. Select the links below to check out the results of each.
+For this project, I've chosen to document the API with three different tools: [Swagger UI](https://swagger.io/tools/swagger-ui/), [Stoplight](https://stoplight.io/), and [Markdown](https://en.wikipedia.org/wiki/Markdown). I created a yaml file that follows the [OpenAPI Specification Version 3.0.3](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md) and used both Swagger UI and Stoplight to render the documentation. I also created the documentation using Markdown, which makes up the main part of this README file. Select the links below to check out the results of each.
 
 - [API documentation using Swagger UI](https://guarded-eyrie-88809.herokuapp.com/api-docs)
 
@@ -594,4 +594,6 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to top](#riddles-api-documentation)
+[Top of API documentation](#riddles-api-documentation)
+
+[Top of README](#introduction)
