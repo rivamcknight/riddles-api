@@ -27,7 +27,7 @@ For this project, I've chosen to document the API with three different tools: [S
   - [Modify a riddle](#modifying-a-riddle)
 
 ## Overview
-The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all. Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API."
+The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API.
 
 **Riddles API Server**:  https://guarded-eyrie-88809.herokuapp.com
 
