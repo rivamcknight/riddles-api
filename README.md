@@ -20,7 +20,7 @@ For this project, I've chosen to document the API with three different tools: [S
 ### Contents
 - [Overview](#overview)
 - [Authentication](#authentication)
-- [Functions](#functions)
+- [Usage](#usage)
   - [Get riddles in bulk or by id](#getting-riddles-in-bulk-or-by-id)
   - [Get a random riddle](#getting-one-random-riddle)
   - [Create or delete a riddle](#creating-or-deleting-a-riddle)
@@ -34,7 +34,7 @@ The Riddles API can return riddles from a variety of categories. Current categor
 ## Authentication
 No authentication is needed to use this API.
 
-## Functions
+## Usage
 The API's endpoints and usage are described in the following sections. 
 
 - [Get riddles in bulk or by id](#getting-riddles-in-bulk-or-by-id):
@@ -135,7 +135,7 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. It could also occur if the database is empty. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -191,7 +191,7 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles with the requested `category` in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -241,7 +241,7 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -294,7 +294,7 @@ Possible errors:
 | 404 | `Not Found`: This error will be returned if there are no riddles with the requested `category` in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -375,7 +375,7 @@ Possible errors:
 | 400 | `Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -422,7 +422,7 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
@@ -509,7 +509,7 @@ Possible errors:
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
-[Back to functions list](#functions)
+[Back to usage list](#usage)
 
 ***
 
