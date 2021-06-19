@@ -365,7 +365,7 @@ components:
       required: true
   responses:
     '400':
-      description: "`Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space."
+      description: "`Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space."
       content:
         application/json: {}
     '403':

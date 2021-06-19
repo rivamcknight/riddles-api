@@ -372,7 +372,7 @@ Possible errors:
 
 | Error code | Description |
 | --- | --- |
-| 400 | `Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space. |
+| 400 | `Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
 [Back to usage list](#usage)
@@ -504,7 +504,7 @@ Possible errors:
 
 | Error code | Description |
 | --- | --- |
-| 400 | `Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space. |
+| 400 | `Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space. |
 | 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database). |
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
@@ -589,7 +589,7 @@ Possible errors:
 
 | Error code | Description |
 | --- | --- |
-| 400 | `Bad Request`: This error will be return if a required field in the request body is missing or if the `category` field contains a space. |
+| 400 | `Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space. |
 | 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database). |
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
