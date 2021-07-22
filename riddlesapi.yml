@@ -1,7 +1,7 @@
 openapi: '3.0.3'
 info:
   title: "Riddles API"
-  description: "The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API. <br><br> **NOTE**: No authentication is needed to use this API."
+  description: "Are you looking for a way to add riddles to your application? Rather than build the feature yourself, you can use this pre-built API. The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Riddles in the original database are from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API. <br><br> **NOTE**: No authentication is needed to use this API."
   version: '1.0'
 servers:
   - url: https://guarded-eyrie-88809.herokuapp.com
@@ -85,7 +85,7 @@ paths:
           $ref: '#/components/responses/500'
     put:
       summary: "Updates (by overwriting) a riddle in the database"
-      description: "Updates a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      description: "Updates a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the initial riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
       tags:
         - "Modify a riddle"
       parameters:
@@ -117,7 +117,7 @@ paths:
           $ref: '#/components/responses/500'
     patch:
       summary: "Updates individual fields of a riddle in the database"
-      description: "Updates one or more fields of a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set desired fields to a new value. Omitted fields retain their values. Currently, updating seed data (the original riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
+      description: "Updates one or more fields of a Riddle object. Select a Riddle object by setting the query parameter to its `id`. Use the JSON request body to set desired fields to a new value. Omitted fields retain their values. Currently, updating seed data (the initial riddles added to the database) is not allowed. <br><br> **Note**: The `Content-Type` header should be set to `application/json`."
       tags:
         - "Modify a riddle"
       parameters:
@@ -154,7 +154,7 @@ paths:
           $ref: '#/components/responses/500'
     delete:
       summary: "Deletes a riddle from the database"
-      description: "Deletes a Riddle object from the database. Select a Riddle object to delete by setting the query parameter to its `id`. Currently, deleting seed data (the original riddles added to the database) is not allowed."
+      description: "Deletes a Riddle object from the database. Select a Riddle object to delete by setting the query parameter to its `id`. Currently, deleting seed data (the initial riddles added to the database) is not allowed."
       tags:
         - "Create or delete a riddle"
       parameters:
@@ -278,7 +278,7 @@ components:
     category:  
         name: category
         in: path
-        description: "**Required**: A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word."
+        description: "**Required**: A riddle category. The seed data (the initial riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word."
         schema:
           type: string
         required: true
@@ -369,7 +369,7 @@ components:
       content:
         application/json: {}
     '403':
-      description: "`Forbidden`: This error will be returned when attempting to modify the seed data (the original riddles added to the database)."
+      description: "`Forbidden`: This error will be returned when attempting to modify the seed data (the initial riddles added to the database)."
       content:
         application/json:
           schema:

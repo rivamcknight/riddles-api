@@ -27,7 +27,7 @@ For this project, I've chosen to document the API with three different tools: [S
   - [Modify a riddle](#modifying-a-riddle)
 
 ## Overview
-The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Seed data for the original riddle database is from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API.
+Are you looking for a way to add riddles to your application? Rather than build the feature yourself, you can use this pre-built API. The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Riddles in the original database are from [https://parade.com/947956/parade/riddles/](https://parade.com/947956/parade/riddles/). New riddles can be added and updated via the API.
 
 **Riddles API Server**:  https://guarded-eyrie-88809.herokuapp.com
 
@@ -35,7 +35,7 @@ The Riddles API can return riddles from a variety of categories. Current categor
 No authentication is needed to use this API.
 
 ## Usage
-The API's endpoints and usage are described in the following sections. 
+The API's endpoints and usage are described in the following sections: 
 
 - [Get riddles in bulk or by id](#getting-riddles-in-bulk-or-by-id):
   - [Get all riddles or an individual riddle](#-to-get-all-riddles-or-an-individual-riddle)
@@ -66,14 +66,17 @@ The optional query parameter is defined as:
 | --- | --- | --- | --- |
 | id | string | Optional | If the database id for a riddle is known, use this parameter to get that specific Riddle object. **Omit for all riddles to be returned.** |
 
-Example curl request to get all riddles:
+**Example request**
+
+A curl request to get _all_ riddles:
 ```
 curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles'
 ```
 
-The response will be an array of Riddle objects.
+**Example response**
 
-Example successful response of an array of riddles:
+A successful response has an HTTP status code of `200` and is an array of Riddle objects:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -98,14 +101,18 @@ Content-Type: application/json; charset=utf-8
 
 The same endpoint can be used with the `id` query parameter to get an individual riddle. 
 
-Example curl request to get an individual riddle:
+**Example request**
+
+A curl request to get an _individual_ riddle:
+
 ```
 curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe'
 ```
 
-The response will be an individual Riddle object.
+**Example response**
 
-Example successful response:
+A successful response has an HTTP status code of `200` and is an individual Riddle object:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -128,7 +135,9 @@ The Riddle object returned uses this schema:
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Possible errors:
+**Possible error responses**
+
+A `GET` request to the /riddles endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
@@ -151,16 +160,20 @@ The path parameter is defined as:
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
-| category | string | Required | A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word. |
+| category | string | Required | A riddle category. The seed data (the initial riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word. |
 
-Example curl request to get all riddles:
+**Example request**
+
+A curl request to get all riddles from the _easy_ category:
+
 ```
 curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy'
 ```
 
-The response will be an array of Riddle objects.
+**Example response**
 
-Example successful response:
+A successful response is an array of Riddle objects:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -184,7 +197,9 @@ The Riddle objects returned use this schema:
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Possible errors:
+**Possible error responses**
+
+A `GET` request to the /riddles/{category} endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
@@ -205,7 +220,10 @@ Possible errors:
 
 Make a `GET` request. A random Riddle object from the entire database is selected and returned.
 
-Example curl request:
+**Example request**
+
+A curl request to get a random riddle:
+
 ```
 curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/random'
 ```
@@ -220,7 +238,10 @@ A successful response will return an HTTP status code of `200`. The Riddle objec
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Example successful response:
+**Example response**
+
+A successful response is an individual Riddle object:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -234,7 +255,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `GET` request to the /riddles/random endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
@@ -257,9 +280,12 @@ The path parameter is defined as:
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
-| category | string | Required | A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word. |
+| category | string | Required | A riddle category. The seed data (the initial riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word. |
 
-Example curl request:
+**Example request**
+
+A curl request to get a random riddle from the _easy_ category:
+
 ```
 curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
 ```
@@ -273,7 +299,10 @@ A successful response will return an HTTP status code of `200`. The Riddle objec
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Example successful response:
+**Example response**
+
+A successful response is an individual Riddle object:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -287,7 +316,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `GET` request to the /riddles/{category}/random endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
@@ -319,7 +350,10 @@ The request body should use the following schema:
 
 **Note**: The `Content-Type` header should be set to `application/json`.
 
-Example curl request:
+**Example request**
+
+A curl request to add a new riddle:
+
 ```
 curl -X POST \
   'https://guarded-eyrie-88809.herokuapp.com/riddles' \
@@ -350,7 +384,10 @@ Where the Riddle object has this schema:
 | source | string | The source of the riddle |
 | __v | number | An internal versioning number used by Mongoose (the Object Data Model library used to connect to the MongoDB database). |
 
-Example successful response:
+**Example response**
+
+A successful response to a `POST` request is an object like below:
+
 ```
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
@@ -368,7 +405,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `POST` request to the /riddles endpoint may return the following errors.
 
 | Error code | Description |
 | --- | --- |
@@ -385,7 +424,7 @@ Possible errors:
 | --- | --- | --- |
 | `DELETE` | /riddles | Deletes a riddle from the database |
 
-Select a Riddle object to delete by setting the query parameter to its `id`. Currently, deleting seed data (the original riddles added to the database) is not allowed.
+Select a Riddle object to delete by setting the query parameter to its `id`. Currently, deleting seed data (the initial riddles added to the database) is not allowed.
 
 The query parameter is defined as:
 
@@ -393,7 +432,10 @@ The query parameter is defined as:
 | --- | --- | --- | --- |
 | id | string | Required | The database `id` for the riddle. This is needed for `PUT`, `PATCH`, or `DELETE` requests which are operations performed on an existing riddle. |
 
-Example curl request:
+**Example request**
+
+A curl request to delete a riddle:
+
 ```
 curl -X DELETE 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
 ```
@@ -404,7 +446,10 @@ A successful response will return an HTTP status code of `200` and have the foll
 | --- | ---| ---|
 | message | string | A brief success message |
 
-Example successful response:
+**Example response**
+
+A successful response to a DELETE request:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -414,11 +459,13 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `DELETE` request to the /riddles endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
-| 403 | `Forbidden`: This error will be returned if you try to delete the seed data (the original riddles added to the database).|
+| 403 | `Forbidden`: This error will be returned if you try to delete the seed data (the initial riddles added to the database).|
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
@@ -434,7 +481,7 @@ Possible errors:
 | --- | --- | --- |
 | `PUT` | /riddles | Updates (by overwriting) a riddle in the database |
 
-Select a Riddle object to update by setting the query parameter to its `id`. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the original riddles added to the database) is not allowed.
+Select a Riddle object to update by setting the query parameter to its `id`. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the initial riddles added to the database) is not allowed.
 
 The query parameter is defined as:
 
@@ -453,7 +500,10 @@ The request body should use the following schema:
 
 **Note**: The `Content-Type` header should be set to `application/json`.
 
-Example curl request:
+**Example request**
+
+A curl request to update (overwrite) a riddle:
+
 ```
 curl -X PUT \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
@@ -483,7 +533,10 @@ Where the Riddle object has this schema:
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Example successful response:
+**Example response**
+
+A successful response to a `PUT` request is an object like below:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -500,12 +553,14 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `PUT` request to the /riddles endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
 | 400 | `Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space. |
-| 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database). |
+| 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the initial riddles added to the database). |
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
@@ -519,7 +574,7 @@ Possible errors:
 | --- | --- | --- |
 | `PATCH` | /riddles | Updates individual fields of a riddle in the database |
 
-Select a Riddle object to update by setting the query parameter to its `id`. Use the JSON request body to set one or more fields to a new value. Omitted fields retain their values. Currently, updating seed data (the original riddles added to the database) is not allowed.
+Select a Riddle object to update by setting the query parameter to its `id`. Use the JSON request body to set one or more fields to a new value. Omitted fields retain their values. Currently, updating seed data (the initial riddles added to the database) is not allowed.
 
 The query parameter is defined as:
 
@@ -538,7 +593,10 @@ The request body should use the following schema:
 
 **Note**: The `Content-Type` header should be set to `application/json`.
 
-Example curl request:
+**Example request**
+
+A curl request to update a field of a riddle:
+
 ```
 curl -X PATCH \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
@@ -568,7 +626,10 @@ Where the Riddle object has this schema:
 | category | string | A classification of the riddle. The original database includes the categories: easy, hard, funny, kids, math, and word. This is not an enum and more can be added. |
 | source | string | The source of the riddle |
 
-Example successful response:
+**Example response**
+
+A successful response to a `PATCH` request is an object like below:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -585,12 +646,14 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Possible errors:
+**Possible error responses**
+
+A `PATCH` request to the /riddles endpoint may return the following errors:
 
 | Error code | Description |
 | --- | --- |
 | 400 | `Bad Request`: This error will be returned if a required field in the request body is missing or if the `category` field contains a space. |
-| 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the original riddles added to the database). |
+| 403 | `Forbidden`: This error will be returned if you try to modify the seed data (the initial riddles added to the database). |
 | 404 | `Not Found`: This error will occur if the requested riddle `id` is not found in the database. |
 | 500 | `Internal Server Error`: An unexpected error occurred on the server. |
 
