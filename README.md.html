@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
       </head>
       <body>
-        <div id="content">
-    <h1 id="introduction">Introduction</h1>
-<p>I created this simple API to experiment with API documentation tools. This project was created with Node.js with Express and MongoDB with Mongoose.</p>
+    <div id='content'>
+      <h1 id="introduction">Introduction</h1>
+<p>I created this simple API to experiment with API documentation tools. This project was created with Node.js with Express and MongoDB with Mongoose. </p>
 <p>I am using <a href="https://www.heroku.com/">Heroku</a> to host a live version of the app so that the interactive tools are usable.</p>
 <p>For this project, I've chosen to document the API with three different tools: <a href="https://swagger.io/tools/swagger-ui/">Swagger UI</a>, <a href="https://stoplight.io/">Stoplight</a>, and <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. I created a yaml file that follows the <a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md">OpenAPI Specification Version 3.0.3</a> and used both Swagger UI and Stoplight to render the documentation. I also created the documentation using Markdown, which makes up the main part of this README file. Select the links below to check out the results of each.</p>
 <ul>
@@ -34,12 +34,12 @@
 </li>
 </ul>
 <h2 id="overview">Overview</h2>
-<p>The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Seed data for the original riddle database is from <a href="https://parade.com/947956/parade/riddles/">https://parade.com/947956/parade/riddles/</a>. New riddles can be added and updated via the API.</p>
+<p>Are you looking for a way to add riddles to your application? Rather than build the feature yourself, you can use this pre-built API. The Riddles API can return riddles from a variety of categories. Current categories include easy, hard, kids, math, word, and funny. Request one random riddle or request them all! Riddles in the original database are from <a href="https://parade.com/947956/parade/riddles/">https://parade.com/947956/parade/riddles/</a>. New riddles can be added and updated via the API.</p>
 <p><strong>Riddles API Server</strong>:  https://guarded-eyrie-88809.herokuapp.com</p>
 <h2 id="authentication">Authentication</h2>
 <p>No authentication is needed to use this API.</p>
 <h2 id="usage">Usage</h2>
-<p>The API's endpoints and usage are listed and described in the following sections. </p>
+<p>The API's endpoints and usage are described in the following sections: </p>
 <ul>
   <li><a href="#getting-riddles-in-bulk-or-by-id">Get riddles in bulk or by id</a>:
     <ul>
@@ -104,11 +104,12 @@
 </tr>
 </tbody>
 </table>
-<p>Example curl request to get all riddles:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to get <em>all</em> riddles:</p>
 <pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles'
 </code></pre>
-<p>The response will be an array of Riddle objects.</p>
-<p>Example successful response of an array of riddles:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response has an HTTP status code of <code>200</code> and is an array of Riddle objects:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -130,11 +131,12 @@ Content-Type: application/json; charset=utf-8
 ]
 </code></pre>
 <p>The same endpoint can be used with the <code>id</code> query parameter to get an individual riddle. </p>
-<p>Example curl request to get an individual riddle:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to get an <em>individual</em> riddle:</p>
 <pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe'
 </code></pre>
-<p>The response will be an individual Riddle object.</p>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response has an HTTP status code of <code>200</code> and is an individual Riddle object:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -183,7 +185,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>GET</code> request to the /riddles endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -237,15 +240,16 @@ Content-Type: application/json; charset=utf-8
 <td>category</td>
 <td>string</td>
 <td>Required</td>
-<td>A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word.</td>
+<td>A riddle category. The seed data (the initial riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word.</td>
 </tr>
 </tbody>
 </table>
-<p>Example curl request to get all riddles:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to get all riddles from the <em>easy</em> category:</p>
 <pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy'
 </code></pre>
-<p>The response will be an array of Riddle objects.</p>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response is an array of Riddle objects:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 [
@@ -295,7 +299,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>GET</code> request to the /riddles/{category} endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -335,7 +340,8 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p>Make a <code>GET</code> request. A random Riddle object from the entire database is selected and returned.</p>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to get a random riddle:</p>
 <pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/random'
 </code></pre>
 <p>A successful response will return an HTTP status code of <code>200</code>. The Riddle object returned uses this schema:</p>
@@ -375,7 +381,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response is an individual Riddle object:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -387,7 +394,8 @@ Content-Type: application/json; charset=utf-8
   "source": "https://parade.com/947956/parade/riddles/"
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>GET</code> request to the /riddles/random endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -441,11 +449,12 @@ Content-Type: application/json; charset=utf-8
 <td>category</td>
 <td>string</td>
 <td>Required</td>
-<td>A riddle category. The seed data (original riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word.</td>
+<td>A riddle category. The seed data (the initial riddles added to the database) include the following categories: easy, hard, funny, kids, math, and word.</td>
 </tr>
 </tbody>
 </table>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to get a random riddle from the <em>easy</em> category:</p>
 <pre><code>curl -X GET 'https://guarded-eyrie-88809.herokuapp.com/riddles/easy/random'
 </code></pre>
 <p>A successful response will return an HTTP status code of <code>200</code>. The Riddle object returned uses this schema:</p>
@@ -485,7 +494,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response is an individual Riddle object:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -497,7 +507,8 @@ Content-Type: application/json; charset=utf-8
   "source": "https://parade.com/947956/parade/riddles/"
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>GET</code> request to the /riddles/{category}/random endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -575,7 +586,8 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to add a new riddle:</p>
 <pre><code>curl -X POST \
   'https://guarded-eyrie-88809.herokuapp.com/riddles' \
   -H 'Content-Type: application/json' \
@@ -650,7 +662,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response to a <code>POST</code> request is an object like below:</p>
 <pre><code>HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
 
@@ -666,7 +679,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>POST</code> request to the /riddles endpoint may return the following errors.</p>
 <table>
 <thead>
 <tr>
@@ -704,7 +718,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Select a Riddle object to delete by setting the query parameter to its <code>id</code>. Currently, deleting seed data (the original riddles added to the database) is not allowed.</p>
+<p>Select a Riddle object to delete by setting the query parameter to its <code>id</code>. Currently, deleting seed data (the initial riddles added to the database) is not allowed.</p>
 <p>The query parameter is defined as:</p>
 <table>
 <thead>
@@ -724,7 +738,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to delete a riddle:</p>
 <pre><code>curl -X DELETE 'https://guarded-eyrie-88809.herokuapp.com/riddles?id=60bc3adb1e6946b94ca7a70a'
 </code></pre>
 <p>A successful response will return an HTTP status code of <code>200</code> and have the following schema:</p>
@@ -744,7 +759,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response to a DELETE request:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -752,7 +768,8 @@ Content-Type: application/json; charset=utf-8
   "message": Successfully deleted riddle"
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>DELETE</code> request to the /riddles endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -763,7 +780,7 @@ Content-Type: application/json; charset=utf-8
 <tbody>
 <tr>
 <td>403</td>
-<td><code>Forbidden</code>: This error will be returned if you try to delete the seed data (the original riddles added to the database).</td>
+<td><code>Forbidden</code>: This error will be returned if you try to delete the seed data (the initial riddles added to the database).</td>
 </tr>
 <tr>
 <td>404</td>
@@ -795,7 +812,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Select a Riddle object to update by setting the query parameter to its <code>id</code>. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the original riddles added to the database) is not allowed.</p>
+<p>Select a Riddle object to update by setting the query parameter to its <code>id</code>. Use the JSON request body to set new values. Fields set in the request body will overwrite all existing values. Omitting a non-required field from the request body sets that field to null. Currently, updating seed data (the initial riddles added to the database) is not allowed.</p>
 <p>The query parameter is defined as:</p>
 <table>
 <thead>
@@ -853,7 +870,8 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to update (overwrite) a riddle:</p>
 <pre><code>curl -X PUT \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
@@ -923,7 +941,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response to a <code>PUT</code> request is an object like below:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -938,7 +957,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>PUT</code> request to the /riddles endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -953,7 +973,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 <tr>
 <td>403</td>
-<td><code>Forbidden</code>: This error will be returned if you try to modify the seed data (the original riddles added to the database).</td>
+<td><code>Forbidden</code>: This error will be returned if you try to modify the seed data (the initial riddles added to the database).</td>
 </tr>
 <tr>
 <td>404</td>
@@ -984,7 +1004,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Select a Riddle object to update by setting the query parameter to its <code>id</code>. Use the JSON request body to set one or more fields to a new value. Omitted fields retain their values. Currently, updating seed data (the original riddles added to the database) is not allowed.</p>
+<p>Select a Riddle object to update by setting the query parameter to its <code>id</code>. Use the JSON request body to set one or more fields to a new value. Omitted fields retain their values. Currently, updating seed data (the initial riddles added to the database) is not allowed.</p>
 <p>The query parameter is defined as:</p>
 <table>
 <thead>
@@ -1042,7 +1062,8 @@ Content-Type: application/json; charset=utf-8
 </tbody>
 </table>
 <p><strong>Note</strong>: The <code>Content-Type</code> header should be set to <code>application/json</code>.</p>
-<p>Example curl request:</p>
+<p><strong>Example request</strong></p>
+<p>A curl request to update a field of a riddle:</p>
 <pre><code>curl -X PATCH \
   'http://guarded-eyrie-88809.herokuapp.com/riddles?id=60bd0708d7dcc31bd9376abe' \
   -H 'Content-Type: application/json' \
@@ -1112,7 +1133,8 @@ Content-Type: application/json; charset=utf-8
 </tr>
 </tbody>
 </table>
-<p>Example successful response:</p>
+<p><strong>Example response</strong></p>
+<p>A successful response to a <code>PATCH</code> request is an object like below:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 
@@ -1127,7 +1149,8 @@ Content-Type: application/json; charset=utf-8
   }
 }
 </code></pre>
-<p>Possible errors:</p>
+<p><strong>Possible error responses</strong></p>
+<p>A <code>PATCH</code> request to the /riddles endpoint may return the following errors:</p>
 <table>
 <thead>
 <tr>
@@ -1142,7 +1165,7 @@ Content-Type: application/json; charset=utf-8
 </tr>
 <tr>
 <td>403</td>
-<td><code>Forbidden</code>: This error will be returned if you try to modify the seed data (the original riddles added to the database).</td>
+<td><code>Forbidden</code>: This error will be returned if you try to modify the seed data (the initial riddles added to the database).</td>
 </tr>
 <tr>
 <td>404</td>
